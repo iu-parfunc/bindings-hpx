@@ -581,7 +581,41 @@ import System.Clock
 #ccall hpx_get_num_threads , IO CInt
 #ccall hpx_is_active , IO CInt
 
--- TODO: Wrapper functions
--- #ccall hpx_time_add , <hpx_time_t> \
---                    -> <hpx_time_t> \
---                    -> IO <hpx_time_t>
+#ccall wr_hpx_time_add , Ptr <hpx_time_t> \
+                      -> Ptr <hpx_time_t> \
+                      -> Ptr <hpx_time_t> \
+                      -> IO ()
+#ccall wr_hpx_time_construct , Ptr <hpx_time_t> \
+                            -> CULong           \
+                            -> CULong           \
+                            -> IO ()
+#ccall wr_hpx_time_diff , Ptr <hpx_time_t> \
+                       -> Ptr <hpx_time_t> \
+                       -> Ptr <hpx_time_t> \
+                       -> IO ()
+#ccall wr_hpx_time_diff_ms , Ptr <hpx_time_t> \
+                          -> Ptr <hpx_time_t> \
+                          -> IO CDouble
+#ccall wr_hpx_time_diff_ns , Ptr <hpx_time_t> \
+                          -> Ptr <hpx_time_t> \
+                          -> IO Int64
+#ccall wr_hpx_time_diff_us , Ptr <hpx_time_t> \
+                          -> Ptr <hpx_time_t> \
+                          -> IO CDouble
+#ccall wr_hpx_time_elapsed , Ptr <hpx_time_t> \
+                          -> Ptr <hpx_time_t> \
+                          -> IO ()
+#ccall wr_hpx_time_elapsed_ms , Ptr <hpx_time_t> \
+                             -> IO CDouble
+#ccall wr_hpx_time_elapsed_ns , Ptr <hpx_time_t> \
+                             -> IO Word64
+#ccall wr_hpx_time_elapsed_us , Ptr <hpx_time_t> \
+                             -> IO CDouble
+#ccall wr_hpx_time_from_start_ns , Ptr <hpx_time_t> \
+                                -> IO Word64
+#ccall wr_hpx_time_ms , Ptr <hpx_time_t> \
+                     -> IO CDouble
+#ccall wr_hpx_time_now , Ptr <hpx_time_t> \
+                      -> IO ()
+#ccall wr_hpx_time_ns , Ptr <hpx_time_t> \
+                     -> IO CDouble
