@@ -44,6 +44,35 @@ import System.Clock
 #num HPX_FUNCTION
 #num HPX_OPENCL
 
+#ccall _hpx_call , <hpx_addr_t> \
+                   -> <hpx_action_t> \
+                   -> <hpx_addr_t> \
+                   -> CInt \
+                   -> CString \
+                   -> CInt \
+                   -> IO CInt
+#ccall _hpx_call_async , <hpx_addr_t> \
+                         -> <hpx_action_t> \
+                         -> <hpx_addr_t> \
+                         -> <hpx_addr_t> \
+                         -> CInt \
+                         -> CString \
+                         -> CInt \
+                         -> IO CInt
+#ccall _hpx_call_cc , <hpx_addr_t> \
+                      -> <hpx_action_t> \
+                      -> CInt \
+                      -> CString \
+                      -> CInt \
+                      -> IO CInt
+#ccall _hpx_call_sync , <hpx_addr_t> \
+                        -> <hpx_action_t> \
+                        -> Ptr () \
+                        -> CSize \
+                        -> CInt \
+                        -> CString \
+                        -> CInt \
+                        -> IO CInt
 #ccall hpx_register_action , <hpx_action_type_t> \
                              -> Word32 \
                              -> CString \
