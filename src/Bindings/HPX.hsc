@@ -45,6 +45,15 @@ import System.Clock
 #num HPX_FUNCTION
 #num HPX_OPENCL
 
+-- Action attributes
+#num HPX_ATTR_NONE
+#num HPX_MARSHALLED
+#num HPX_PINNED
+#num HPX_INTERNAL
+#num HPX_VECTORED
+#num HPX_COALESCED
+#num HPX_COMPRESSED
+
 #integral_t intptr_t
 
 #ccall _hpx_call , <hpx_addr_t>   \
