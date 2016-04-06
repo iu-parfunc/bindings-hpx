@@ -594,6 +594,7 @@ import System.Clock
 #ccall hpx_is_active , IO CInt
 
 #synonym_t hpx_type_t , Ptr <ffi_type>
+#cinline HPX_CHAR       , <hpx_type_t>
 #cinline HPX_UCHAR      , <hpx_type_t>
 #cinline HPX_SCHAR      , <hpx_type_t>
 #cinline HPX_SHORT      , <hpx_type_t>
