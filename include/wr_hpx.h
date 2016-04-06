@@ -1,6 +1,7 @@
 #ifndef WR_HPX_H
 #define WR_HPX_H
 
+#include <bindings.cmacros.h>
 #include <hpx/hpx.h>
 #include <stdint.h>
 
@@ -19,5 +20,34 @@ double   wr_hpx_time_ms(const hpx_time_t *from);
 void     wr_hpx_time_now(hpx_time_t *dest);
 double   wr_hpx_time_ns(const hpx_time_t *t);
 double   wr_hpx_time_us(const hpx_time_t *from);
+
+BC_INLINE_(HPX_CHAR              ,hpx_type_t)
+BC_INLINE_(HPX_UCHAR             ,hpx_type_t)
+BC_INLINE_(HPX_SCHAR             ,hpx_type_t)
+BC_INLINE_(HPX_SHORT             ,hpx_type_t)
+BC_INLINE_(HPX_USHORT            ,hpx_type_t)
+BC_INLINE_(HPX_SSHORT            ,hpx_type_t)
+BC_INLINE_(HPX_INT               ,hpx_type_t)
+BC_INLINE_(HPX_UINT              ,hpx_type_t)
+BC_INLINE_(HPX_SINT              ,hpx_type_t)
+BC_INLINE_(HPX_LONG              ,hpx_type_t)
+BC_INLINE_(HPX_ULONG             ,hpx_type_t)
+BC_INLINE_(HPX_SLONG             ,hpx_type_t)
+BC_INLINE_(HPX_VOID              ,hpx_type_t)
+BC_INLINE_(HPX_UINT8             ,hpx_type_t)
+BC_INLINE_(HPX_SINT8             ,hpx_type_t)
+BC_INLINE_(HPX_UINT16            ,hpx_type_t)
+BC_INLINE_(HPX_SINT16            ,hpx_type_t)
+BC_INLINE_(HPX_UINT32            ,hpx_type_t)
+BC_INLINE_(HPX_SINT32            ,hpx_type_t)
+BC_INLINE_(HPX_UINT64            ,hpx_type_t)
+BC_INLINE_(HPX_SINT64            ,hpx_type_t)
+BC_INLINE_(HPX_FLOAT             ,hpx_type_t)
+BC_INLINE_(HPX_DOUBLE            ,hpx_type_t)
+BC_INLINE_(HPX_POINTER           ,hpx_type_t)
+BC_INLINE_(HPX_LONGDOUBLE        ,hpx_type_t)
+BC_INLINE_(HPX_SIZE_T            ,hpx_type_t)
+BC_INLINE_(HPX_ADDR              ,hpx_type_t)
+BC_INLINE_(HPX_ACTION_T          ,hpx_type_t)
 
 #endif

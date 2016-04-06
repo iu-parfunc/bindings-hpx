@@ -2,6 +2,8 @@
 #include <hpx/hpx.h>
 module Bindings.HPX where
 
+import Bindings.Libffi (C'ffi_type)
+
 import Data.Int
 import Data.Word
 
@@ -56,12 +58,12 @@ import System.Clock
 
 #integral_t intptr_t
 
-#ccall _hpx_call , <hpx_addr_t>   \
-                -> <hpx_action_t> \
-                -> <hpx_addr_t>   \
-                -> CInt           \
-                -> CString        \
-                -> CInt           \
+#ccall _hpx_call , <hpx_addr_t>           \
+                -> <hpx_action_t>         \
+                -> <hpx_addr_t>           \
+                -> CInt                   \
+                -> CString                \
+                -> CInt                   \
                 -> IO CInt
 #ccall _hpx_call_async , <hpx_addr_t>   \
                       -> <hpx_action_t> \
@@ -172,13 +174,14 @@ import System.Clock
                        -> CInt               \
                        -> Ptr ()             \
                        -> IO CInt
-#ccall hpx_register_action , <hpx_action_type_t> \
-                          -> Word32              \
-                          -> CString             \
-                          -> Ptr <hpx_action_t>  \
-                          -> CUInt               \
-                          -> CString             \
-                          -> CInt                \
+#ccall hpx_register_action , <hpx_action_type_t>    \
+                          -> Word32                 \
+                          -> CString                \
+                          -> Ptr <hpx_action_t>     \
+                          -> CUInt                  \
+                          -> <hpx_action_handler_t> \
+                          -> CString                \
+                          -> CInt                   \
                           -> IO CInt
 #ccall hpx_thread_can_alloca , CSize \
                             -> IO <intptr_t>
@@ -589,6 +592,35 @@ import System.Clock
 #ccall hpx_get_num_ranks , IO CInt
 #ccall hpx_get_num_threads , IO CInt
 #ccall hpx_is_active , IO CInt
+
+#synonym_t hpx_type_t , Ptr <ffi_type>
+#cinline HPX_UCHAR      , <hpx_type_t>
+#cinline HPX_SCHAR      , <hpx_type_t>
+#cinline HPX_SHORT      , <hpx_type_t>
+#cinline HPX_USHORT     , <hpx_type_t>
+#cinline HPX_SSHORT     , <hpx_type_t>
+#cinline HPX_INT        , <hpx_type_t>
+#cinline HPX_UINT       , <hpx_type_t>
+#cinline HPX_SINT       , <hpx_type_t>
+#cinline HPX_LONG       , <hpx_type_t>
+#cinline HPX_ULONG      , <hpx_type_t>
+#cinline HPX_SLONG      , <hpx_type_t>
+#cinline HPX_VOID       , <hpx_type_t>
+#cinline HPX_UINT8      , <hpx_type_t>
+#cinline HPX_SINT8      , <hpx_type_t>
+#cinline HPX_UINT16     , <hpx_type_t>
+#cinline HPX_SINT16     , <hpx_type_t>
+#cinline HPX_UINT32     , <hpx_type_t>
+#cinline HPX_SINT32     , <hpx_type_t>
+#cinline HPX_UINT64     , <hpx_type_t>
+#cinline HPX_SINT64     , <hpx_type_t>
+#cinline HPX_FLOAT      , <hpx_type_t>
+#cinline HPX_DOUBLE     , <hpx_type_t>
+#cinline HPX_POINTER    , <hpx_type_t>
+#cinline HPX_LONGDOUBLE , <hpx_type_t>
+#cinline HPX_SIZE_T     , <hpx_type_t>
+#cinline HPX_ADDR       , <hpx_type_t>
+#cinline HPX_ACTION_T   , <hpx_type_t>
 
 #ccall wr_hpx_time_add , Ptr <hpx_time_t> \
                       -> Ptr <hpx_time_t> \
