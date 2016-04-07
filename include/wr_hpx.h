@@ -21,6 +21,9 @@ void     wr_hpx_time_now(hpx_time_t *dest);
 double   wr_hpx_time_ns(const hpx_time_t *t);
 double   wr_hpx_time_us(const hpx_time_t *from);
 
+BC_INLINE_(HPX_ACTION_NULL,    hpx_action_t)
+BC_INLINE_(HPX_ACTION_INVALID, hpx_action_t)
+
 BC_INLINE_(HPX_CHAR              ,hpx_type_t)
 BC_INLINE_(HPX_UCHAR             ,hpx_type_t)
 BC_INLINE_(HPX_SCHAR             ,hpx_type_t)

@@ -47,6 +47,9 @@ import System.Clock
 #num HPX_FUNCTION
 #num HPX_OPENCL
 
+#cinline HPX_ACTION_NULL    , <hpx_action_t>
+#cinline HPX_ACTION_INVALID , <hpx_action_t>
+
 -- Action attributes
 #num HPX_ATTR_NONE
 #num HPX_MARSHALLED
@@ -508,8 +511,8 @@ import System.Clock
 
 #ccall _hpx_run , Ptr <hpx_action_t> \
                -> CInt               \
-               -> CString            \
-               -> CInt               \
+               -> Ptr CString        \
+               -> Ptr CSize          \
                -> IO CInt
 #ccall hpx_exit , CInt \
                -> IO ()
