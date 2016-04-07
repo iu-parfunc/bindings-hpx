@@ -180,8 +180,8 @@ import System.Clock
                           -> Ptr <hpx_action_t>     \
                           -> CUInt                  \
                           -> <hpx_action_handler_t> \
-                          -> CString                \
-                          -> CInt                   \
+                          -> <hpx_type_t>           \
+                          -> <hpx_type_t>           \
                           -> IO CInt
 #ccall hpx_thread_can_alloca , CSize \
                             -> IO <intptr_t>
@@ -511,6 +511,8 @@ import System.Clock
                -> CString            \
                -> CInt               \
                -> IO CInt
+#ccall hpx_exit , CInt \
+               -> IO ()
 #ccall hpx_finalize , IO ()
 #ccall hpx_init , Ptr CInt          \
                -> Ptr (Ptr CString) \
