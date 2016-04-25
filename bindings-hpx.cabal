@@ -19,7 +19,7 @@ source-repository head
 
 library
   exposed-modules:     Bindings.HPX
-  build-depends:       base >= 4.3 && < 5
+  build-depends:       base >= 4.7 && < 5
                      , bindings-DSL
                      , bindings-libffi
   if os(linux)

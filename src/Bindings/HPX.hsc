@@ -1,5 +1,7 @@
 #include <bindings.dsl.h>
 #include <hpx/hpx.h>
+
+{-# LANGUAGE PatternSynonyms #-}
 module Bindings.HPX where
 
 import Bindings.Libffi (C'ffi_type)
@@ -41,23 +43,23 @@ import System.Clock
                                          -> IO CInt
 
 #integral_t hpx_action_type_t
-#num HPX_DEFAULT
-#num HPX_TASK
-#num HPX_INTERRUPT
-#num HPX_FUNCTION
-#num HPX_OPENCL
+#num_pattern HPX_DEFAULT
+#num_pattern HPX_TASK
+#num_pattern HPX_INTERRUPT
+#num_pattern HPX_FUNCTION
+#num_pattern HPX_OPENCL
 
 #cinline HPX_ACTION_NULL    , <hpx_action_t>
 #cinline HPX_ACTION_INVALID , <hpx_action_t>
 
 -- Action attributes
-#num HPX_ATTR_NONE
-#num HPX_MARSHALLED
-#num HPX_PINNED
-#num HPX_INTERNAL
-#num HPX_VECTORED
-#num HPX_COALESCED
-#num HPX_COMPRESSED
+#num_pattern HPX_ATTR_NONE
+#num_pattern HPX_MARSHALLED
+#num_pattern HPX_PINNED
+#num_pattern HPX_INTERNAL
+#num_pattern HPX_VECTORED
+#num_pattern HPX_COALESCED
+#num_pattern HPX_COMPRESSED
 
 #integral_t intptr_t
 
@@ -209,10 +211,10 @@ import System.Clock
 #callback_t hpx_gas_dist_t , Word32 -> CSize -> Word32 -> IO <hpx_addr_t>
 
 #integral_t hpx_gas_dist_type_t
-#num HPX_DIST_TYPE_USER
-#num HPX_DIST_TYPE_LOCAL
-#num HPX_DIST_TYPE_CYCLIC
-#num HPX_DIST_TYPE_BLOCKED
+#num_pattern HPX_DIST_TYPE_USER
+#num_pattern HPX_DIST_TYPE_LOCAL
+#num_pattern HPX_DIST_TYPE_CYCLIC
+#num_pattern HPX_DIST_TYPE_BLOCKED
 
 #ccall _hpx_gas_bcast_sync , <hpx_action_t> \
                           -> <hpx_addr_t>   \
