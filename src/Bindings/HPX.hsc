@@ -438,6 +438,15 @@ import System.Clock
                            -> IO Bool
 
 #integral_t hpx_status_t
+#cinline HPX_ERROR          , <hpx_status_t>
+#cinline HPX_SUCCESS        , <hpx_status_t>
+#cinline HPX_RESEND         , <hpx_status_t>
+#cinline HPX_LCO_ERROR      , <hpx_status_t>
+#cinline HPX_LCO_CHAN_EMPTY , <hpx_status_t>
+#cinline HPX_LCO_TIMEOUT    , <hpx_status_t>
+#cinline HPX_LCO_RESET      , <hpx_status_t>
+#cinline HPX_ENOMEM         , <hpx_status_t>
+#cinline HPX_USER           , <hpx_status_t>
 
 #ccall hpx_lco_and_new , Int64 \
                       -> IO <hpx_addr_t>
@@ -536,11 +545,15 @@ import System.Clock
 -- System
 -------------------------------------------------------------------------------
 
-#ccall _hpx_run , Ptr <hpx_action_t> \
-               -> CInt               \
-               -> Ptr CString        \
-               -> Ptr CSize          \
-               -> IO CInt
+#ccall_var _hpx_run , _hpx_run_1 , Ptr <hpx_action_t> \
+                                -> CInt               \
+                                -> Ptr <hpx_action_t> \
+                                -> IO CInt
+#ccall_var _hpx_run , _hpx_run_2 , Ptr <hpx_action_t> \
+                                -> CInt               \
+                                -> Ptr CString        \
+                                -> Ptr CSize          \
+                                -> IO CInt
 #ccall hpx_exit , CInt \
                -> IO ()
 #ccall hpx_finalize , IO ()
