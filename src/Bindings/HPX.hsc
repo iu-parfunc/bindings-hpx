@@ -68,7 +68,7 @@ import System.Clock
                 -> <hpx_addr_t>           \
                 -> CInt                   \
                 -> CString                \
-                -> CInt                   \
+                -> CSize                  \
                 -> IO CInt
 #ccall _hpx_call_async , <hpx_addr_t>   \
                       -> <hpx_action_t> \
@@ -76,13 +76,13 @@ import System.Clock
                       -> <hpx_addr_t>   \
                       -> CInt           \
                       -> CString        \
-                      -> CInt           \
+                      -> CSize          \
                       -> IO CInt
 #ccall _hpx_call_cc , <hpx_addr_t>   \
                    -> <hpx_action_t> \
                    -> CInt           \
                    -> CString        \
-                   -> CInt           \
+                   -> CSize          \
                    -> IO CInt
 #ccall _hpx_call_sync , <hpx_addr_t>   \
                      -> <hpx_action_t> \
@@ -90,7 +90,7 @@ import System.Clock
                      -> CSize          \
                      -> CInt           \
                      -> CString        \
-                     -> CInt           \
+                     -> CSize          \
                      -> IO CInt
 #ccall _hpx_call_when , <hpx_addr_t>   \
                      -> <hpx_addr_t>   \
@@ -114,7 +114,7 @@ import System.Clock
                           -> CSize          \
                           -> CInt           \
                           -> CString        \
-                          -> CInt           \
+                          -> CSize          \
                           -> IO CInt
 #ccall _hpx_call_when_with_continuation , <hpx_addr_t>   \
                                        -> <hpx_addr_t>   \
@@ -123,7 +123,7 @@ import System.Clock
                                        -> <hpx_action_t> \
                                        -> CInt           \
                                        -> CString        \
-                                       -> CInt           \
+                                       -> CSize          \
                                        -> IO CInt
 #ccall _hpx_call_with_continuation , <hpx_addr_t>   \
                                   -> <hpx_action_t> \
@@ -131,11 +131,11 @@ import System.Clock
                                   -> <hpx_action_t> \
                                   -> CInt           \
                                   -> CString        \
-                                  -> CInt           \
+                                  -> CSize          \
                                   -> IO CInt
 #ccall _hpx_thread_continue , CInt    \
                            -> CString \
-                           -> CInt    \
+                           -> CSize   \
                            -> IO CInt
 #ccall hpx_action_get_handler , <hpx_action_t> \
                              -> IO <hpx_action_handler_t>
@@ -179,15 +179,40 @@ import System.Clock
                        -> CInt               \
                        -> Ptr ()             \
                        -> IO CInt
-#ccall hpx_register_action , <hpx_action_type_t>    \
-                          -> Word32                 \
-                          -> CString                \
-                          -> Ptr <hpx_action_t>     \
-                          -> CUInt                  \
-                          -> <hpx_action_handler_t> \
-                          -> <hpx_type_t>           \
-                          -> <hpx_type_t>           \
-                          -> IO CInt
+#ccall_var hpx_register_action, hpx_register_action_0 , <hpx_action_type_t> \
+                                                     -> Word32              \
+                                                     -> CString             \
+                                                     -> Ptr <hpx_action_t>  \
+                                                     -> CUInt               \
+                                                     -> FunPtr ()           \
+                                                     -> IO CInt
+#ccall_var hpx_register_action, hpx_register_action_1 , <hpx_action_type_t> \
+                                                     -> Word32              \
+                                                     -> CString             \
+                                                     -> Ptr <hpx_action_t>  \
+                                                     -> CUInt               \
+                                                     -> FunPtr ()           \
+                                                     -> <hpx_type_t>        \
+                                                     -> IO CInt
+#ccall_var hpx_register_action, hpx_register_action_2 , <hpx_action_type_t> \
+                                                     -> Word32              \
+                                                     -> CString             \
+                                                     -> Ptr <hpx_action_t>  \
+                                                     -> CUInt               \
+                                                     -> FunPtr ()           \
+                                                     -> <hpx_type_t>        \
+                                                     -> <hpx_type_t>        \
+                                                     -> IO CInt
+#ccall_var hpx_register_action, hpx_register_action_3 , <hpx_action_type_t> \
+                                                     -> Word32              \
+                                                     -> CString             \
+                                                     -> Ptr <hpx_action_t>  \
+                                                     -> CUInt               \
+                                                     -> FunPtr ()           \
+                                                     -> <hpx_type_t>        \
+                                                     -> <hpx_type_t>        \
+                                                     -> <hpx_type_t>        \
+                                                     -> IO CInt
 #ccall hpx_thread_can_alloca , CSize \
                             -> IO <intptr_t>
 #ccall hpx_thread_current_action , IO <hpx_action_t>
@@ -223,7 +248,7 @@ import System.Clock
                           -> CSize          \
                           -> CInt           \
                           -> CString        \
-                          -> CInt           \
+                          -> CSize          \
                           -> IO CInt
 #ccall _hpx_gas_bcast_with_continuation , <hpx_action_t> \
                                        -> <hpx_addr_t>   \
@@ -234,7 +259,7 @@ import System.Clock
                                        -> <hpx_addr_t>   \
                                        -> CInt           \
                                        -> CString        \
-                                       -> CInt           \
+                                       -> CSize          \
                                        -> IO CInt
 #ccall hpx_addr_add , <hpx_addr_t> \
                    -> Int64        \
@@ -537,7 +562,7 @@ import System.Clock
                              -> <hpx_addr_t>   \
                              -> CInt           \
                              -> CString        \
-                             -> CInt           \
+                             -> CSize          \
                              -> IO CInt
 #ccall _hpx_process_broadcast_lsync , <hpx_pid_t>    \
                                    -> <hpx_action_t> \
@@ -554,7 +579,7 @@ import System.Clock
                         -> <hpx_addr_t>   \
                         -> CInt           \
                         -> CString        \
-                        -> CInt           \
+                        -> CSize          \
                         -> IO CInt
 #ccall hpx_process_collective_allreduce_delete , <hpx_addr_t> \
                                               -> IO ()
