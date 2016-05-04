@@ -473,7 +473,7 @@ import System.Clock
 #ccall hpx_lco_error_sync , <hpx_addr_t>   \
                          -> <hpx_status_t> \
                          -> IO ()
-#ccall hpx_lco_future_new , CSize \
+#ccall hpx_lco_future_new , CInt \
                          -> IO <hpx_addr_t>
 #ccall hpx_lco_get , <hpx_addr_t> \
                   -> CSize        \
