@@ -417,10 +417,10 @@ import System.Clock
 #ccall hpx_memalign_registered , CSize \
                               -> CSize \
                               -> IO (Ptr ())
+#cinline HPX_NULL , <hpx_addr_t>
+#globalvar HPX_HERE, <hpx_addr_t>
 #ccall HPX_THERE , Word32 \
                 -> IO <hpx_addr_t>
-
-#globalvar HPX_HERE, <hpx_addr_t>
 
 -------------------------------------------------------------------------------
 -- LCOs
